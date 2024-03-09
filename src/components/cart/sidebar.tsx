@@ -35,34 +35,40 @@ const CartSidebar = () => {
 					)}
 				</Button>
 			</SheetTrigger>
-			<SheetContent>
-				<SheetHeader>
-					<SheetTitle>Carrinho</SheetTitle>
-				</SheetHeader>
+			<SheetContent className="flex flex-col justify-between overflow-scroll">
+				<div>
+					<SheetHeader>
+						<SheetTitle>Carrinho</SheetTitle>
+					</SheetHeader>
 
-				<div className="flex flex-col gap-5 my-3">
-					{cart.map((item) => (
-						<CartItem key={item.product.id} item={item} />
-					))}
+					<div className="flex flex-col gap-5 my-3 pt-6">
+						{cart.map((item) => (
+							<div key={item.product.id} className="">
+								<CartItem item={item} />
+
+								<Separator className="my-6" />
+							</div>
+						))}
+					</div>
 				</div>
 
-				<Separator className="my-4" />
+				<div>
+					<Separator />
 
-				<div className="flex justify-between items-center text-xs">
-					<div>Total:</div>
-					<div>R$ {subtotal.toFixed(2)}</div>
-				</div>
+					<div className="flex justify-between items-center text-xl font-medium mb-7 mt-3">
+						<div>Total:</div>
+						<div>R$ {subtotal.toFixed(2)}</div>
+					</div>
 
-				<Separator className="my-4" />
-
-				<div className="text-center">
-					<Button
-						onClick={() => setCheckoutOpen(true)}
-						className="w-full"
-						disabled={cart.length === 0}
-					>
-						Finalizar compra
-					</Button>
+					<div className="text-center">
+						<Button
+							onClick={() => setCheckoutOpen(true)}
+							className="w-full"
+							disabled={cart.length === 0}
+						>
+							Finalizar compra
+						</Button>
+					</div>
 				</div>
 
 				<CheckoutDialog open={checkoutOpen} onOpenChange={setCheckoutOpen} />
