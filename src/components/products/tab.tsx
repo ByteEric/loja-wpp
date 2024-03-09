@@ -1,23 +1,58 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import TabsSkeleton from "./skeleton";
+import { getAllProducts } from "@/services/product";
+import { Product } from "@/types/product";
+import { ProductEmpty } from "@/components/products/empty";
+import { ProductItem } from "@/components/products/item";
 
-const ProductsTab = () => {
+type Tab = {
+	title: string;
+	value: string;
+	products: Product[];
+};
+
+const ProductsTab = async () => {
+	const products = await getAllProducts();
+
+	const tabs = [
+		{
+			title: "Pizza",
+			value: "pizza",
+			products: products.filter((item) => item.category === "pizza"),
+		},
+		{
+			title: "Petisco",
+			value: "petisco",
+			products: products.filter((item) => item.category === "petisco"),
+		},
+		{
+			title: "Bebida",
+			value: "bebida",
+			products: products.filter((item) => item.category === "bebida"),
+		},
+	];
+
 	return (
-		<Tabs defaultValue="tab1">
+		<Tabs defaultValue="pizza">
 			<TabsList className="flex">
-				<TabsTrigger value="tab1" className="flex-1">
-					Tab 1
-				</TabsTrigger>
-				<TabsTrigger value="tab2" className="flex-1">
-					Tab 2
-				</TabsTrigger>
+				{tabs.map((item) => (
+					<TabsTrigger key={item.value} value={item.value} className="flex-1">
+						{item.title}
+					</TabsTrigger>
+				))}
 			</TabsList>
-			<TabsContent value="tab1" className="mt-6">
-				<TabsSkeleton />
-			</TabsContent>
-			<TabsContent value="tab2" className="mt-6">
-				<TabsSkeleton />
-			</TabsContent>
+			{tabs.map((item) => (
+				<TabsContent key={item.value} value={item.value} className="mt-6">
+					{item.products.length > 0 && (
+						<div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4">
+							{item.products.map((product) => (
+								<ProductItem key={product.id} item={product} />
+							))}
+						</div>
+					)}
+
+					{item.products.length === 0 && <ProductEmpty />}
+				</TabsContent>
+			))}
 		</Tabs>
 	);
 };
