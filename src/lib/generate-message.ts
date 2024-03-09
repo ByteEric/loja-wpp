@@ -10,12 +10,15 @@ export const GenerateMessage = () => {
 		orderProducts.push(`${item.quantity}x ${item.product.name}`);
 	}
 
-	return `**Dados do cliente:**
-  Nome: ${name}
-  Endereço: ${address.street}, ${address.number} ${
-		address.complement || ""
-	} - ${address.district}, ${address.city}/ ${address.state}
-  ------
-  **Produtos:**
-  ${orderProducts.join("\n")}`;
+	return `
+*Nome do cliente:* ${name}\n
+*Endereço de entrega:* 
+Rua: ${address.street} - ${address.number} ${address.complement || ""}
+Bairro: ${address.district}
+Cidade: ${address.city}
+Estado: ${address.state}\n
+*Produtos:**
+${orderProducts.join(", ")}\n
+*Valor total:**
+${cart.reduce((acc, item) => acc + item.quantity * item.product.price, 0)}`;
 };
