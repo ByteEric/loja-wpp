@@ -31,21 +31,22 @@ export const ProductItem = ({ item }: Props) => {
 	}
 
 	return (
-		<div>
-			<div className="rounded-md overflow-hidden">
-				<Image
-					src={item.image}
-					alt={item.name}
-					width={400}
-					height={300}
-					className="w-full h-32 object-cover"
-				/>
-			</div>
-			<div className="mt-3 flex flex-col gap-2">
+		<div className="overflow-hidden bg-[#F3F5F7] rounded p-4">
+			<Image
+				src={item.image}
+				alt={item.name}
+				width={400}
+				height={300}
+				className="w-full h-32 object-cover rounded"
+			/>
+			<Button onClick={handleAddToCart} className="mt-4 w-full">
+				Adicionar
+			</Button>
+			<div className="mt-2 flex flex-col">
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger className="text-left">
-							<p className="text-lg">{item.name}</p>
+							<p className="text-base font-semibold">{item.name}</p>
 						</TooltipTrigger>
 						<TooltipContent>
 							<p>{item.ingredients}</p>
@@ -53,10 +54,7 @@ export const ProductItem = ({ item }: Props) => {
 					</Tooltip>
 				</TooltipProvider>
 
-				<p className="text-sm opacity-50">R$ {item.price.toFixed(2)}</p>
-				<Button variant="outline" onClick={handleAddToCart}>
-					Adicionar
-				</Button>
+				<p className="text-sm font-semibold">R$ {item.price.toFixed(2)}</p>
 			</div>
 		</div>
 	);
