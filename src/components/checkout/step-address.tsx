@@ -36,84 +36,101 @@ export const StepAddress = ({ setStep }: Props) => {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)}>
-				<div className="grid grid-cols-2 gap-4">
-					<FormField
-						control={form.control}
-						name="street"
-						render={({ field }) => (
-							<FormItem>
-								<Label>Rua</Label>
-								<FormControl>
-									<Input {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
+				<div className="flex flex-col gap-4">
+					<div className="flex gap-4">
+						<div className="w-3/4">
+							<FormField
+								control={form.control}
+								name="street"
+								render={({ field }) => (
+									<FormItem>
+										<Label>Rua</Label>
+										<FormControl>
+											<Input {...field} />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+						</div>
+						<div className="1/4">
+							<FormField
+								control={form.control}
+								name="number"
+								render={({ field }) => (
+									<FormItem>
+										<Label>Número</Label>
+										<FormControl>
+											<Input {...field} />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+						</div>
+					</div>
 
-					<FormField
-						control={form.control}
-						name="number"
-						render={({ field }) => (
-							<FormItem>
-								<Label>Número</Label>
-								<FormControl>
-									<Input {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
+					<div className="flex gap-4">
+						<div className="w-1/4">
+							<FormField
+								control={form.control}
+								name="complement"
+								render={({ field }) => (
+									<FormItem>
+										<Label>Complemento</Label>
+										<FormControl>
+											<Input {...field} />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+						</div>
 
-					<FormField
-						control={form.control}
-						name="complement"
-						render={({ field }) => (
-							<FormItem>
-								<Label>Complemento</Label>
-								<FormControl>
-									<Input {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
+						<div className="w-3/4">
+							<FormField
+								control={form.control}
+								name="district"
+								render={({ field }) => (
+									<FormItem>
+										<Label>Bairro</Label>
+										<FormControl>
+											<Input {...field} />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+						</div>
+					</div>
 
-					<FormField
-						control={form.control}
-						name="district"
-						render={({ field }) => (
-							<FormItem>
-								<Label>Bairro</Label>
-								<FormControl>
-									<Input {...field} />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
+					<div className="flex gap-4">
+						<div className="w-1/2">
+							<FormField
+								control={form.control}
+								name="city"
+								render={() => (
+									<FormItem>
+										<Label>Cidade</Label>
+										<FormControl>
+											<Input disabled value="Juiz de Fora" />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+						</div>
 
-					<FormField
-						control={form.control}
-						name="city"
-						render={() => (
-							<FormItem>
-								<Label>Cidade</Label>
-								<FormControl>
-									<Input disabled value="Juiz de Fora" />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
-
-					<FormField
-						control={form.control}
-						name="state"
-						render={() => (
-							<FormItem>
-								<Label>Estado</Label>
-								<FormControl>
-									<Input disabled value="MG" />
-								</FormControl>
-							</FormItem>
-						)}
-					/>
+						<div className="w-1/2">
+							<FormField
+								control={form.control}
+								name="state"
+								render={() => (
+									<FormItem>
+										<Label>Estado</Label>
+										<FormControl>
+											<Input disabled value="MG" />
+										</FormControl>
+									</FormItem>
+								)}
+							/>
+						</div>
+					</div>
 				</div>
 
 				<div className="flex justify-between mt-4 gap-4">
