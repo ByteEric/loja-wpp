@@ -46,7 +46,7 @@ export const ProductItem = ({ item }: Props) => {
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger className="text-left">
-							<p className="text-base font-semibold">{item.name}</p>
+							<p className="text-base font-semibold text-black">{item.name}</p>
 						</TooltipTrigger>
 						<TooltipContent>
 							<p>{item.ingredients}</p>
@@ -54,7 +54,9 @@ export const ProductItem = ({ item }: Props) => {
 					</Tooltip>
 				</TooltipProvider>
 
-				<p className="text-sm font-semibold">R$ {item.price.toFixed(2)}</p>
+				<p className="text-sm font-semibold text-black">
+					R$ {item.price.toFixed(2)}
+				</p>
 			</div>
 		</div>
 	);
