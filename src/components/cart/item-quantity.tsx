@@ -16,18 +16,20 @@ export const CartItemQuantity = ({ cartItem }: Props) => {
 				className="size-6"
 				size="icon"
 				variant="outline"
-				onClick={() => upsertCartItem(cartItem.product, 1)}
+				onClick={() => upsertCartItem(cartItem.product, -1)}
 			>
-				<PlusIcon className="size-3" />
+				<MinusIcon className="size-3" />
 			</Button>
+
 			<div className="text-xs">{cartItem.quantity}</div>
+
 			<Button
 				className="size-6"
 				size="icon"
 				variant="outline"
-				onClick={() => upsertCartItem(cartItem.product, -1)}
+				onClick={() => upsertCartItem(cartItem.product, 1)}
 			>
-				<MinusIcon className="size-3" />
+				<PlusIcon className="size-3" />
 			</Button>
 		</div>
 	);
