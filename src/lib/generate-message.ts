@@ -20,5 +20,7 @@ Estado: ${address.state}\n
 *Produtos:**
 ${orderProducts.join(", ")}\n
 *Valor total:**
-${cart.reduce((acc, item) => acc + item.quantity * item.product.price, 0)}`;
+${cart
+	.reduce((acc, item) => acc + item.quantity * item.product.price, 0)
+	.toFixed(2)}`;
 };
