@@ -46,7 +46,9 @@ export const ProductItem = ({ item }: Props) => {
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger className="text-left">
-							<p className="text-base font-semibold text-black">{item.name}</p>
+							<p className="text-base font-semibold text-black hover:decoration-dashed hover:underline transition hover:line-clamp-6">
+								{item.name}
+							</p>
 						</TooltipTrigger>
 						<TooltipContent>
 							<p>{item.ingredients}</p>
