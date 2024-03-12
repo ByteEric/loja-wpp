@@ -31,7 +31,7 @@ export const ProductItem = ({ item }: Props) => {
 	}
 
 	return (
-		<div className="overflow-hidden bg-[#F3F5F7] rounded p-4">
+		<div className="overflow-hidden bg-slate-100 dark:bg-slate-800 dark:text-white rounded p-4 drop-shadow-md hover:drop-shadow-lg">
 			<Image
 				src={item.image}
 				alt={item.name}
@@ -46,7 +46,7 @@ export const ProductItem = ({ item }: Props) => {
 				<TooltipProvider>
 					<Tooltip>
 						<TooltipTrigger className="text-left">
-							<p className="text-base font-semibold text-black hover:decoration-dashed hover:underline transition hover:line-clamp-6">
+							<p className="text-base font-semibold hover:decoration-dashed hover:underline transition">
 								{item.name}
 							</p>
 						</TooltipTrigger>
@@ -56,9 +56,7 @@ export const ProductItem = ({ item }: Props) => {
 					</Tooltip>
 				</TooltipProvider>
 
-				<p className="text-sm font-semibold text-black">
-					R$ {item.price.toFixed(2)}
-				</p>
+				<p className="text-sm font-semibold">R$ {item.price.toFixed(2)}</p>
 			</div>
 		</div>
 	);

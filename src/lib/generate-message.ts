@@ -2,7 +2,7 @@ import { useCartStore } from "@/stores/cart-store";
 import { useCheckoutStore } from "@/stores/checkout-store";
 
 export const GenerateMessage = () => {
-	const { name, address } = useCheckoutStore((state) => state);
+	const { name, address, payment } = useCheckoutStore((state) => state);
 	const { cart } = useCartStore((state) => state);
 
 	let orderProducts = [];
@@ -17,10 +17,13 @@ Rua: ${address.street} - ${address.number} ${address.complement || ""}
 Bairro: ${address.district}
 Cidade: ${address.city}
 Estado: ${address.state}\n
-*Produtos:**
+*Produtos:*
 ${orderProducts.join(", ")}\n
-*Valor total:**
+*Valor total:*
 ${cart
 	.reduce((acc, item) => acc + item.quantity * item.product.price, 0)
-	.toFixed(2)}`;
+	.toFixed(2)}\n\n
+*Método de pagamento:*
+${payment.paymentMethod}
+`;
 };

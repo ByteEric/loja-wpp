@@ -31,7 +31,7 @@ export const StepAddress = ({ setStep }: Props) => {
 
 	const onSubmit = (values: z.infer<typeof formSchema>) => {
 		setAddress(values);
-		setStep("finish");
+		setStep("payment");
 	};
 	return (
 		<Form {...form}>

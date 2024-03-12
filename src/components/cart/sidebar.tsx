@@ -27,12 +27,13 @@ const CartSidebar = () => {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
-				<Button className="relative">
-					<ShoppingCart className="mr-2" />
-					<p>Carrinho</p>
+				<Button className="flex items-center gap-1" variant="link">
 					{cart.length > 0 && (
-						<span className="absolute bg-red-600 size-3 rounded-full -right-1 -top-1" />
+						<span className="bg-black text-white dark:bg-white dark:text-black text-xs w-5 h-5 rounded-full flex items-center justify-center">
+							{cart.length}
+						</span>
 					)}
+					<ShoppingCart className="mr-2 h-6 w-6" />
 				</Button>
 			</SheetTrigger>
 			<SheetContent className="flex flex-col justify-between overflow-scroll">
@@ -54,10 +55,12 @@ const CartSidebar = () => {
 
 				<div>
 					<Separator />
-
-					<div className="flex justify-between items-center text-xl font-medium mb-7 mt-3">
+					<div className="flex justify-between items-center text-xl font-medium mb-2 mt-3">
 						<div>Total:</div>
 						<div>R$ {subtotal.toFixed(2)}</div>
+					</div>
+					<div className="text-xs opacity-50 text-right mb-7">
+						* taxa de entrega não inclusa
 					</div>
 
 					<div className="text-center">

@@ -10,6 +10,7 @@ import { Progress } from "@/components/ui/progress";
 import { useState } from "react";
 import { StepUser } from "@/components/checkout/step-user";
 import { StepAddress } from "@/components/checkout/step-address";
+import { StepPayment } from "@/components/checkout/step-payment";
 import { StepFinish } from "@/components/checkout/step-finish";
 import { CheckoutSteps } from "@/types/checkout-steps";
 
@@ -24,10 +25,13 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
 	let progressPct = 0;
 	switch (step) {
 		case "user":
-			progressPct = 33.3;
+			progressPct = 25;
 			break;
 		case "address":
-			progressPct = 66.6;
+			progressPct = 50;
+			break;
+		case "payment":
+			progressPct = 75;
 			break;
 		case "finish":
 			progressPct = 100;
@@ -41,6 +45,7 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
 					<DialogTitle>
 						{step === "user" && "Dados Pessoais"}
 						{step === "address" && "Endereço de entrega"}
+						{step === "payment" && "Método de pagamento"}
 						{step === "finish" && "Envio para o WhatsApp"}
 					</DialogTitle>
 				</DialogHeader>
@@ -50,6 +55,7 @@ export const CheckoutDialog = ({ open, onOpenChange }: Props) => {
 				<div className="flex flex-col gap-3">
 					{step === "user" && <StepUser setStep={setStep} />}
 					{step === "address" && <StepAddress setStep={setStep} />}
+					{step === "payment" && <StepPayment setStep={setStep} />}
 					{step === "finish" && <StepFinish />}
 				</div>
 			</DialogContent>
